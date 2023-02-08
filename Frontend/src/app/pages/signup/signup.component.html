@@ -1,0 +1,87 @@
+<app-navbar></app-navbar>
+<main>
+    <div class="container">
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                        <div class="d-flex justify-content-center py-4"> <a routerLink="/"
+                                class="logo d-flex align-items-center w-auto"> <img src="assets/img/logo.png" alt="">
+                                <span class="d-none d-lg-block">Register</span> </a>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div class="card-body">
+
+                                <div class="pt-4 pb-2">
+                                    <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                                    <p class="text-center small">Enter your personal details to create account</p>
+                                </div>
+                                <form class="row g-3 needs-validation" [formGroup] = "signup" (ngSubmit)="onsubmit()" novalidate>
+                                    <div class="col-12">
+                                        <label class="form-label">I am</label>
+
+                                        <select class="form-select" formControlName="role" aria-label="Default select example">
+                                            <option selected>Select One</option>
+                                            <option value="Student">Student</option>
+                                            <option value="Professor">Professor</option>
+
+                                        </select>
+
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="name" class="form-label">Your Name</label> <input type="text"
+                                            class="form-control" id="name" formControlName="name" required>
+                                        <div class="invalid-feedback">Please, enter your name!</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="dob" class="form-label">DOB</label> <input type="date"
+                                          class="form-control" id="dob" formControlName="dob" required>
+                                        <div class="invalid-feedback">Please, enter your name!</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="phone" class="form-label">Phone</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text" id="inputGroupPrepend">+91</span> <input
+                                                type="text"  class="form-control" id="phone" formControlName="phone" required>
+                                            <div class="invalid-feedback">Please, enter your name!</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="address" class="form-label">Address</label><textarea
+                                            class="form-control" id="address" style="height: 100px;" formControlName="address"></textarea>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="email" class="form-label">Email</label> <input type="email"
+                                            formControlName="email" class="form-control" id="email" required>
+                                        <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="password" class="form-label">Password</label> <input
+                                            type="password" formControlName="password" class="form-control" id="password"
+                                            required>
+                                        <div class="invalid-feedback">Please enter your password!</div>
+
+                                    </div>
+                                    <!-- <div class="col-12">
+                                        <label for="address" class="form-label">Profile Image</label><input type="file"
+                                            name="password" class="form-control" id="yourPassword" required>
+                                    </div> -->
+                                    
+
+
+                                    <div class="col-12"> <button class="btn btn-primary w-100" type="submit">Create
+                                            Account</button></div>
+                                    <div class="col-12">
+                                        <p class="small mb-0">Already have an account? <a routerLink="/login">Log in</a>
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
