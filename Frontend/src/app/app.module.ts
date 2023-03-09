@@ -14,6 +14,8 @@ import { ProfessorlayoutComponent } from './pages/professor/professorlayout/prof
 import { StudentlayoutComponent } from './pages/student/studentlayout/studentlayout.component';
 import { AddcourseComponent } from './pages/professor/addcourse/addcourse.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { EnrollComponent } from './pages/student/enroll/enroll.component';
+import { DashboardComponent } from './pages/professor/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { FooterComponent } from './components/footer/footer.component';
     ProfessorlayoutComponent,
     StudentlayoutComponent,
     AddcourseComponent,
-    FooterComponent
+    FooterComponent,
+    EnrollComponent,
+    DashboardComponent
 
   ],
   imports: [

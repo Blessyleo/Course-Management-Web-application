@@ -14,23 +14,33 @@
                                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                                     <p class="text-center small">Enter your username & password to login</p>
                                 </div>
-                                <form class="row g-3 needs-validation"  #userlogin="ngForm" (ngSubmit)="userverify()" novalidate>
+                                <form class="row g-3 needs-validation" #userlogin="ngForm" (ngSubmit)="userverify()"
+                                    novalidate>
                                     <div class="col-12">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" name="email" class="form-control" id="email"  [(ngModel)]="userform.email"
-                                            required>
-                                        <div class="invalid-feedback">Please enter your Email.</div>
+                                        <input type="email" name="email" class="form-control" id="email"
+                                            [(ngModel)]="userform.email" #email="ngModel"
+                                            [class.is-invalid]="email.invalid && email.touched" required
+                                            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                        <small class="text-danger" [class.d-none]="email.valid || email.untouched"
+                                            style="color: black; font-size: small,">
+                                            Enter a valid email
+                                        </small>
 
                                     </div>
                                     <div class="col-12">
                                         <label for="yourPassword" class="form-label">Password</label> <input
-                                            type="password" name="password" class="form-control" id="yourPassword"    [(ngModel)]="userform.password"
-                                            required>
-                                        <div class="invalid-feedback">Please enter your password!</div>
+                                            type="password" name="password" class="form-control" id="yourPassword"
+                                            [(ngModel)]="userform.password" #password="ngModel"
+                                            [class.is-invalid]="password.invalid && password.touched" required
+                                            minlength="8"
+                                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[A-Za-z0-9]).{8,}$">
+                                        <small class="text-danger" [class.d-none]="password.valid || password.untouched"
+                                            style="color: black; font-size: small">Enter correct password</small>
                                     </div>
 
-                                    <div class="col-12"> <button class="btn btn-primary w-100"
-                                            type="submit">Login</button></div>
+                                    <div class="col-12"> <button class="btn btn-primary w-100" type="submit"
+                                            [disabled]="userlogin.form.invalid">Login</button></div>
                                     <div class="col-12">
                                         <p class="small mb-0">Don't have account? <a routerLink="/signup">Create
                                                 an account</a></p>

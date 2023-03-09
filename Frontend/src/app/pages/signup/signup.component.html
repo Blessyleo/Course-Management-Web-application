@@ -17,60 +17,84 @@
                                     <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
                                     <p class="text-center small">Enter your personal details to create account</p>
                                 </div>
-                                <form class="row g-3 needs-validation" [formGroup] = "signup" (ngSubmit)="onsubmit()" novalidate>
+                                <form class="row g-3 needs-validation" [formGroup]="signup" (ngSubmit)="onsubmit()"
+                                    novalidate>
                                     <div class="col-12">
                                         <label class="form-label">I am</label>
 
-                                        <select class="form-select" formControlName="role" aria-label="Default select example">
-                                            <option selected>Select One</option>
+                                        <select class="form-select" formControlName="role"
+                                            aria-label="Default select example">
+                                            <!-- <option selected></option> -->
                                             <option value="Student">Student</option>
                                             <option value="Professor">Professor</option>
 
                                         </select>
-
+                                        <span style="color:red ;font-size: small;"
+                                            *ngIf="role && role.invalid && role.touched">this filed is
+                                            required</span>
                                     </div>
                                     <div class="col-12">
                                         <label for="name" class="form-label">Your Name</label> <input type="text"
                                             class="form-control" id="name" formControlName="name" required>
-                                        <div class="invalid-feedback">Please, enter your name!</div>
+                                        <span style="color:red ;font-size: small;"
+                                            *ngIf="name && name.invalid && name.touched">this filed is
+                                            required</span>
                                     </div>
                                     <div class="col-6">
                                         <label for="dob" class="form-label">DOB</label> <input type="date"
-                                          class="form-control" id="dob" formControlName="dob" required>
-                                        <div class="invalid-feedback">Please, enter your name!</div>
+                                            class="form-control" id="dob" formControlName="dob" required>
+                                        <span style="color:red ;font-size: small;"
+                                            *ngIf="dob && dob.invalid && dob.touched">this filed is
+                                            required</span>
                                     </div>
                                     <div class="col-6">
                                         <label for="phone" class="form-label">Phone</label>
                                         <div class="input-group has-validation">
                                             <span class="input-group-text" id="inputGroupPrepend">+91</span> <input
-                                                type="text"  class="form-control" id="phone" formControlName="phone" required>
-                                            <div class="invalid-feedback">Please, enter your name!</div>
+                                                type="text" class="form-control" id="phone" formControlName="phone"
+                                                required>
                                         </div>
+                                        <span style="color:red ;font-size: small;"
+                                            *ngIf="phone && phone.invalid && phone.touched">this filed is
+                                            required</span>
+
                                     </div>
                                     <div class="col-12">
                                         <label for="address" class="form-label">Address</label><textarea
-                                            class="form-control" id="address" style="height: 100px;" formControlName="address"></textarea>
+                                            class="form-control" id="address" style="height: 100px;"
+                                            formControlName="address"></textarea>
+                                        <span style="color:red ;font-size: small;"
+                                            *ngIf="address && address.invalid && address.touched">this filed is
+                                            required</span>
                                     </div>
                                     <div class="col-6">
                                         <label for="email" class="form-label">Email</label> <input type="email"
-                                            formControlName="email" class="form-control" id="email" required>
-                                        <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                            formControlName="email" class="form-control" id="email">
+                                        <span style="color:red ;font-size: small;"
+                                            *ngIf="email && email.invalid && email.touched">Enter Valid Email</span>
                                     </div>
                                     <div class="col-6">
-                                        <label for="password" class="form-label">Password</label> <input
-                                            type="password" formControlName="password" class="form-control" id="password"
-                                            required>
-                                        <div class="invalid-feedback">Please enter your password!</div>
+                                        <label for="password" class="form-label">Password</label> <input type="password"
+                                            formControlName="password" class="form-control" id="password" required>
+                                        <span style="color:red ;font-size: small;"
+                                            *ngIf="password && password.invalid && password.touched">Enter correct
+                                            password</span>
 
                                     </div>
                                     <!-- <div class="col-12">
                                         <label for="address" class="form-label">Profile Image</label><input type="file"
                                             name="password" class="form-control" id="yourPassword" required>
                                     </div> -->
-                                    
+                                    <div class="col-12">
+                                        <p class="small" id="commonErr">
+                                            Password make sure it's at least 8 characters,
+                                            including a number, <br>a uppercase letter and a lowercase letter.
 
+                                        </p>
+                                    </div>
 
-                                    <div class="col-12"> <button class="btn btn-primary w-100" type="submit">Create
+                                    <div class="col-12"> <button class="btn btn-primary w-100" type="submit"
+                                            [disabled]="signup.invalid">Create
                                             Account</button></div>
                                     <div class="col-12">
                                         <p class="small mb-0">Already have an account? <a routerLink="/login">Log in</a>

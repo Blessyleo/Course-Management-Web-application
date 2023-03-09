@@ -15,11 +15,32 @@ export class SignupComponent implements OnInit {
     'dob': new FormControl('', [Validators.required]),
     'phone': new FormControl('', [Validators.required]),
     'address': new FormControl('', [Validators.required]),
-    'email': new FormControl('', Validators.required),
-    'password': new FormControl('', [Validators.required]),
+    'email': new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$')]),
+    'password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[A-Za-z0-9]).{8,}$')]),
     'role': new FormControl('', [Validators.required])
 
   })
+  get role() {
+    return this.signup.get('role')
+  }
+  get name() {
+    return this.signup.get('name')
+  }
+  get dob() {
+    return this.signup.get('dob')
+  }
+  get phone() {
+    return this.signup.get('phone')
+  }
+  get address() {
+    return this.signup.get('address')
+  }
+  get email() {
+    return this.signup.get('email')
+  }
+  get password() {
+    return this.signup.get('password')
+  }
 
   constructor(private auth: AuthService, private router: Router) { }
 

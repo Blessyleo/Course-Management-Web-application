@@ -1,0 +1,116 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="section dashboard">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-xxl-4 col-md-4">
+                        <div class="card info-card customers-card">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Pending <span>| Registration</span></h5>
+                                <div class="d-flex align-items-center">
+                                    <div
+                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-dash-circle"></i></div>
+                                    <div class="ps-3">
+                                        <h6>{{pendingcount}}</h6>
+                                        <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span
+                                            class="text-muted small pt-2 ps-1">increase</span> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-4 col-md-4">
+                        <div class="card info-card revenue-card">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Approved <span>| Registration</span></h5>
+                                <div class="d-flex align-items-center">
+                                    <div
+                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-check-circle"></i></div>
+                                    <div class="ps-3">
+                                        <h6>{{approvedcount}}</h6>
+                                        <!-- <span class="text-success small pt-1 fw-bold">8%</span> <span
+                                            class="text-muted small pt-2 ps-1">increase</span> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-4 col-md-4">
+                        <div class="card info-card sales-card">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Rejected <span>| Registration</span></h5>
+                                <div class="d-flex align-items-center">
+                                    <div
+                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-x-circle"></i></div>
+                                    <div class="ps-3">
+                                        <h6>{{rejectedcount}}</h6>
+                                        <!-- <span class="text-danger small pt-1 fw-bold">12%</span> <span
+                                            class="text-muted small pt-2 ps-1">decrease</span> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col-12">
+                        <div class="card recent-sales overflow-auto">
+                           
+                            <div class="card-body">
+                                <h5 class="card-title">Registered Students</h5>
+                                <table class="table">
+                                   <thead>
+                                      <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Qualification/Year</th>
+                                        <th scope="col">Course</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+                                      </tr>
+                                   </thead>
+                                   <tbody>
+                                    <tr *ngFor="let enroll of enrolllists;let i = index">
+                                        <th scope="row">{{i+1}}</th>
+                                        <td>{{enroll.name}}</td>
+                                        <td>{{enroll.qualification}}/{{enroll.year}}</td>
+                                        <td>{{enroll.course}}</td>
+                                        <td>
+                                            <span class="badge bg-warning"
+                                                *ngIf='enroll.status=="Pending"'>{{enroll.status}}</span>
+                                            <span class="badge bg-success"
+                                                *ngIf='enroll.status=="Approved"'>{{enroll.status}}</span>
+                                            <span class="badge bg-danger"
+                                                *ngIf='enroll.status=="Rejected"'>{{enroll.status}}</span>
+                                        </td>
+                                        <td> <button type="button" class="btn btn-dark m-2" (click)="approve(enroll._id)">Approve</button>
+                                            <button type="button" class="btn btn-dark" (click)="reject(enroll._id)">Reject</button>
+                                        </td>
+                                    </tr>
+                                     
+                                   </tbody>
+                                </table>
+                             </div>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
