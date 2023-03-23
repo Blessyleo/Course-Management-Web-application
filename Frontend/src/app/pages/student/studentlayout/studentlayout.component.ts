@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common'
+import { DOCUMENT } from '@angular/common';
+import { StudentService } from 'src/app/services/student.service';
 
 @Component({
   selector: 'app-studentlayout',
@@ -8,14 +9,23 @@ import { DOCUMENT } from '@angular/common'
 })
 export class StudentlayoutComponent implements OnInit {
 
-  constructor(@Inject(DOCUMENT) private document: Document) { }
+  constructor(@Inject(DOCUMENT) private document: Document, private student: StudentService) { }
+
+  courselists: any = []
 
   ngOnInit(): void {
+    this.getdata();
   }
-  sidebarToggle()
-  {
+  sidebarToggle() {
     //toggle sidebar function
     this.document.body.classList.toggle('toggle-sidebar');
   }
+  getdata() {
+    this.student.getcourse().subscribe(res => {
+      this.courselists = res
+      console.log(res);
+    })
+  }
+
 
 }

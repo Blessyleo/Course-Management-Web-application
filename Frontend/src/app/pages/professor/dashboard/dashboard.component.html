@@ -3,7 +3,7 @@
         <h1>Dashboard</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li class="breadcrumb-item"><a >Home</a></li>
                 <li class="breadcrumb-item active">Dashboard</li>
             </ol>
         </nav>
@@ -97,8 +97,8 @@
                                             <span class="badge bg-danger"
                                                 *ngIf='enroll.status=="Rejected"'>{{enroll.status}}</span>
                                         </td>
-                                        <td> <button type="button" class="btn btn-dark m-2" (click)="approve(enroll._id)">Approve</button>
-                                            <button type="button" class="btn btn-dark" (click)="reject(enroll._id)">Reject</button>
+                                        <td> <button type="button" class="btn btn-dark m-2" (click)="approve(enroll._id,enroll.course)" [disabled]='enroll.status=="Pending"?false:true' >Approve</button>
+                                            <button type="button" class="btn btn-dark" (click)="reject(enroll._id)" [disabled]='enroll.status=="Pending"?false:true' >Reject</button>
                                         </td>
                                     </tr>
                                      

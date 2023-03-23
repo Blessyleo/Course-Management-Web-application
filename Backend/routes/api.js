@@ -118,6 +118,7 @@ router.put('/approve', async (req, res) => {
     }
     let updateData = { $set: item }
     await Enroll.findOneAndUpdate({ _id: id }, updateData)
+    await Course.findOneAndUpdate({ "name": req.body.course }, { $inc: { "intake": 1 } })
     res.json();
 })
 
@@ -165,5 +166,50 @@ router.get('/pendingcount', async (req, res) => {
     }
 })
 
+
+//course delete
+router.delete("/coursedelete/:id", async (req, res) => {
+    try {
+
+        const data = await Course.deleteOne(
+            {
+                _id: req.params.id
+            })
+        res.send(data);//to view in postaman
+    }
+    catch (e) {
+        console.log(`delete error occured ${e}`);
+    }
+})
+
+//get single course
+router.get('/singlecourse/:id', async (req, res) => {
+    try {
+        let id = req.params.id
+        const singlecourse = await Course.findById(id);
+        res.send(singlecourse);
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+// update course
+router.put('/updatecourse', async (req, res) => {
+    try {
+        let id = req.body._id
+        let item = {
+            name: req.body.name,
+            duration: req.body.duration,
+            startdate: req.body.startdate,
+            details: req.body.details,
+            price: req.body.price,
+        }
+        let updatecourse = { $set: item }
+        await Course.findOneAndUpdate({ _id: id }, updatecourse)
+        res.json();
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 module.exports = router;

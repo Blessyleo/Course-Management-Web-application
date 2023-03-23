@@ -8,13 +8,24 @@ import { ProfessorlayoutComponent } from './pages/professor/professorlayout/prof
 import { AddcourseComponent } from './pages/professor/addcourse/addcourse.component';
 import { EnrollComponent } from './pages/student/enroll/enroll.component';
 import { DashboardComponent } from './pages/professor/dashboard/dashboard.component';
+import { ViewcourseComponent } from './pages/professor/viewcourse/viewcourse.component';
+import { UpdatecourseComponent } from './pages/professor/updatecourse/updatecourse.component';
+import { CoursesComponent } from './pages/courses/courses.component';
+import { SdashboardComponent } from './pages/student/sdashboard/sdashboard.component';
 
 
 const routes: Routes = [{ path: '', component: HomeComponent },
 { path: 'login', component: LoginComponent },
 { path: 'signup', component: SignupComponent },
-{path:'student',component:StudentlayoutComponent,children:[{path:'enrollcourse',component:EnrollComponent}]},
-{path:'professor',component:ProfessorlayoutComponent,children:[{path:'',component:DashboardComponent},{path:'dashboard',component:DashboardComponent},{path:'addcourse',component:AddcourseComponent}]}
+{path:'courses',component:CoursesComponent},
+{path:'student',component:StudentlayoutComponent,children:[{path:'enrollcourse',component:EnrollComponent},
+{path:'',component:SdashboardComponent},
+{path:'dashboards',component:SdashboardComponent}]},
+{path:'professor',component:ProfessorlayoutComponent,children:[{path:'',component:DashboardComponent},
+{path:'dashboard',component:DashboardComponent},
+{path:'addcourse',component:AddcourseComponent},
+{path:'viewcourse',component:ViewcourseComponent},
+{path:'editcourse/:id',component:UpdatecourseComponent}]}
 ];
 
 @NgModule({

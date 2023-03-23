@@ -7,7 +7,7 @@ const courseSchema = new Schema({
     startdate: { type: Date, required: true },
     details: { type: String, required: true },
     price: { type: String, required: true },
-    intake: { type: Number}
+    intake: { type: Number, default: 0}
       
 });
 

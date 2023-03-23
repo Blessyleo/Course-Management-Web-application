@@ -16,7 +16,7 @@ export class ProfessorService {
   getenroll() {
     return this.http.get<any>(`${this.apiUrl}/enroll`)
   }
-  
+
   approve(data: any) {
     return this.http.put<any>(`${this.apiUrl}/approve`, data)
   }
@@ -32,5 +32,19 @@ export class ProfessorService {
   }
   pendingcount() {
     return this.http.get<any>(`${this.apiUrl}/pendingcount`)
+  }
+
+  getcourse() {
+    return this.http.get<any>(`${this.apiUrl}/courselist`)
+  }
+
+  onDelete(id: any) {
+    return this.http.delete<any>(`${this.apiUrl}/coursedelete/${id}`)
+  }
+  singlecourse(id: any) {
+    return this.http.get<any>(`${this.apiUrl}/singlecourse/${id}`)
+  }
+  updatecourse(data: any) {
+    return this.http.put<any>(`${this.apiUrl}/updatecourse`, data)
   }
 }

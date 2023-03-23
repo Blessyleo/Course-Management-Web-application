@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   approvedcount: any
   rejectedcount: any
   pendingcount: any
+  clicked = false;
 
   ngOnInit(): void {
 
@@ -36,15 +37,15 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  approve(id: any) {
-    let data = { "_id": id, "status": "Approved" }
+  approve(id: any, course: string) {
+    let data = { "_id": id, "status": "Approved", "course": course }
     this.professor.approve(data).subscribe((res: any) => {
-      alert("Application approved")
+      alert("Application approved");
       this.getdata();
     })
 
   }
-  
+
   reject(id: any) {
     let data = { "_id": id, "status": "Rejected" }
     this.professor.reject(data).subscribe((res: any) => {

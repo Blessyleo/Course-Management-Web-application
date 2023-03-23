@@ -16,6 +16,10 @@ import { AddcourseComponent } from './pages/professor/addcourse/addcourse.compon
 import { FooterComponent } from './components/footer/footer.component';
 import { EnrollComponent } from './pages/student/enroll/enroll.component';
 import { DashboardComponent } from './pages/professor/dashboard/dashboard.component';
+import { ViewcourseComponent } from './pages/professor/viewcourse/viewcourse.component';
+import { UpdatecourseComponent } from './pages/professor/updatecourse/updatecourse.component';
+import { CoursesComponent } from './pages/courses/courses.component';
+import { SdashboardComponent } from './pages/student/sdashboard/sdashboard.component';
 
 
 @NgModule({
@@ -30,7 +34,11 @@ import { DashboardComponent } from './pages/professor/dashboard/dashboard.compon
     AddcourseComponent,
     FooterComponent,
     EnrollComponent,
-    DashboardComponent
+    DashboardComponent,
+    ViewcourseComponent,
+    UpdatecourseComponent,
+    CoursesComponent,
+    SdashboardComponent
 
   ],
   imports: [
